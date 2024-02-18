@@ -1,42 +1,41 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
-import 'package:solution_challenge_front/controller/sign_controller.dart';
+import 'package:solution_challenge_front/constant/firebase_const.dart';
 import 'package:solution_challenge_front/model/floor_model.dart';
-import 'package:solution_challenge_front/model/part_model.dart';
+import 'package:solution_challenge_front/model/section_model.dart';
+import 'package:solution_challenge_front/util/firebase_util/floor_util.dart';
+import 'package:solution_challenge_front/util/firebase_util/section_util.dart';
 
 class HomeController extends GetxController {
   var selectedFloor = 1.obs; // RxString을 사용하여 반응형 변수로 선언
   final floors = List<FloorModel>.empty(growable: true).obs;
-  final availableFloors = <int>[for (int i = 1; i <= 999; i++) i];
-  final pb = Get.find<SignController>().pb;
+  late final RxList<int> availableFloors;
 
   @override
   Future<void> onInit() async {
     super.onInit();
-    final resultList = await pb.collection('floors').getList(
-      page: 1,
-      perPage: 50,
-    );
-    print(resultList.items);
+    bindFirestoreData();
 
-    // 층 데이터를 생성하여 floors 변수에 추가
-    floors.add(FloorModel(floor: 1, parts: [
-      PartModel(floor: 1, part: 'A'),
-      PartModel(floor: 1, part: 'C'),
-    ]));
-    floors.add(FloorModel(floor: 2, parts: [
-      PartModel(floor: 2, part: 'A'),
-      PartModel(floor: 2, part: 'C'),
-    ]));
-    floors.add(FloorModel(floor: 3, parts: [
-      PartModel(floor: 3, part: 'B'),
-      PartModel(floor: 3, part: 'C'),
-      PartModel(floor: 3, part: 'D'),
-    ]));
+    availableFloors = getAvailableFloors().obs;
+  }
 
+  User? user = FirebaseAuth.instance.currentUser;
 
-    if (!availableFloors.contains(selectedFloor.value)) {
-      selectedFloor.value =
-          availableFloors.isNotEmpty ? availableFloors.first : 1;
+  void bindFirestoreData() {
+    if (user == null) {
+      return;
+    } else {
+      FirebaseConst.usersCollection
+          .doc(user!.uid)
+          .collection('floors')
+          .snapshots()
+          .listen((snapshot) {
+        floors.clear();
+        snapshot.docs.forEach((doc) {
+          final floor = FloorModel.fromJson(doc.data());
+          floors.add(floor);
+        });
+      });
     }
   }
 
@@ -46,22 +45,46 @@ class HomeController extends GetxController {
     List<int> availableFloors = [];
     for (int i = 1; i <= 999; i++) {
       // floors에 i층이 없으면 availableFloors에 추가
-      if (floors.indexWhere((element) => element.floor == i) == -1) {
+      if (floors.indexWhere((element) => element.num == i) == -1) {
         availableFloors.add(i);
       }
     }
 
-    print(availableFloors);
     return availableFloors;
   }
 
   // 층 추가 함수
   void addFloor() {
-    final isValid = floors.indexWhere((element) => element.floor == selectedFloor.value) == -1;
+    final isValid =
+        floors.indexWhere((element) => element.num == selectedFloor.value) ==
+            -1;
     if (!isValid) {
-      Get.snackbar('층 추가 실패', '이미 추가된 층입니다.');
+      Get.snackbar('Error', 'floor already exists');
       return;
     }
-    floors.add(FloorModel(floor: selectedFloor.value, parts: []));
+    firebaseAddFloor(floor: selectedFloor.value);
+  }
+
+  // 구역 추가 함수
+  void addSection({required String floorId, required String sectionName}) {
+    // firebase에서 추가
+    final section =
+        firebaseAddSection(floorId: floorId, sectionName: sectionName);
+
+    // 상태관리에서도 추가
+    floors[floors.indexWhere((element) => element.id == floorId)]
+        .sections
+        .add(section);
+  }
+
+  // 구역 삭제 함수
+  void deleteSection(
+      {required String floorId, required SectionModel sectionModel}) {
+    // 상태관리에서도 삭제
+    floors[floors.indexWhere((element) => element.id == floorId)]
+        .sections
+        .remove(sectionModel);
+    // firebase에서 삭제
+    firebaseDeleteSection(floorId: floorId, sectionModel: sectionModel);
   }
 }

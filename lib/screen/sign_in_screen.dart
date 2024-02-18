@@ -3,9 +3,7 @@ import 'package:get/get.dart';
 import 'package:solution_challenge_front/constant/app_color.dart';
 import 'package:solution_challenge_front/controller/sign_controller.dart';
 import 'package:solution_challenge_front/screen/camera_register.dart';
-import 'package:solution_challenge_front/screen/home.dart';
 import 'package:solution_challenge_front/screen/sign_up_screen.dart';
-import 'package:solution_challenge_front/util/pocketbase_util.dart';
 
 class SignInScreen extends StatelessWidget {
   const SignInScreen({super.key});
@@ -48,11 +46,11 @@ class SignInScreen extends StatelessWidget {
                           // 이메일 입력 필드
                           TextFormField(
                             decoration: const InputDecoration(
-                              labelText: '이메일 주소',
+                              labelText: 'email',
                               hintText: 'email@example.com',
                             ),
                             onChanged: (value) {
-                              signController.email.value = value;
+                              signController.user.value.email = value;
                             },
                           ),
                           const SizedBox(height: 20), // 입력 필드 사이의 공간
@@ -60,10 +58,10 @@ class SignInScreen extends StatelessWidget {
                           TextFormField(
                             obscureText: true,
                             decoration: const InputDecoration(
-                              labelText: '비밀번호',
+                              labelText: 'password',
                             ),
                             onChanged: (value) {
-                              signController.password.value = value;
+                              signController.user.value.password = value;
                             },
                           ),
                           const SizedBox(height: 20), // 입력 필드와 버튼 사이의 공간
@@ -78,7 +76,7 @@ class SignInScreen extends StatelessWidget {
                                   backgroundColor: AppColor.primaryColor,
                                   padding:
                                       const EdgeInsets.symmetric(vertical: 13)),
-                              child: const Text('로그인'),
+                              child: const Text('sign in'),
                             ),
                           ),
                           const SizedBox(height: 20),
@@ -93,45 +91,26 @@ class SignInScreen extends StatelessWidget {
                                   padding:
                                       const EdgeInsets.symmetric(vertical: 13)),
                               child: const Text(
-                                '카메라 등록하기',
+                                'enroll camera',
                                 style: TextStyle(color: Colors.white),
                               ),
                             ),
                           ),
 
                           const SizedBox(height: 20), // 버튼 사이의 공간
-                          // 네이버 로그인 버튼
-                          // ElevatedButton(
-                          //   child: const Text('네이버로 로그인'),
-                          //   onPressed: () {},
-                          //   style: ElevatedButton.styleFrom(
-                          //     primary: Colors.green, // 버튼 색상
-                          //   ),
-                          // ),
-                          // const SizedBox(height: 20), // 버튼 사이의 공간
-                          // // 애플 로그인 버튼
-                          // ElevatedButton.icon(
-                          //   icon: const Icon(Icons.apple, color: Colors.white),
-                          //   label: const Text('Apple로 로그인'),
-                          //   onPressed: () {},
-                          //   style: ElevatedButton.styleFrom(
-                          //     primary: Colors.black, // 버튼 색상
-                          //     onPrimary: Colors.white, // 텍스트 색상
-                          //   ),
-                          // ),
-                          // 기타 로그인 옵션 링크들
+
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               TextButton(
-                                  onPressed: () {}, child: const Text('아이디 찾기')),
+                                  onPressed: () {}, child: const Text('forgot ID')),
                               TextButton(
-                                  onPressed: () {}, child: const Text('비밀번호 찾기')),
+                                  onPressed: () {}, child: const Text('forgot password')),
                               TextButton(
                                   onPressed: () {
                                     Get.to(() => SignUpScreen());
                                   },
-                                  child: const Text('회원가입')),
+                                  child: const Text('sign up')),
                             ],
                           ),
                         ],

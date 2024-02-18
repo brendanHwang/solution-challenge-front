@@ -8,10 +8,11 @@ class SettingsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('담당 구역 지정',
+        title: const Text('settings',
             style: TextStyle(
                 color: Colors.black,
                 fontSize: 20,
+                fontWeight: FontWeight.bold
                 )),
         leading: IconButton(
           onPressed: () {

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:solution_challenge_front/constant/app_color.dart';
 import 'package:solution_challenge_front/controller/home_controller.dart';
+import 'package:solution_challenge_front/util/firebase_util/floor_util.dart';
 
 class AddFloorButton extends StatefulWidget {
   const AddFloorButton({super.key});
@@ -21,7 +22,7 @@ class _AddFloorButtonState extends State<AddFloorButton> {
         Get.dialog(
           AlertDialog(
             backgroundColor: Colors.white,
-            title: const Text('층 추가'),
+            title: const Text('add floor'),
             content: Obx(() {
               return DropdownButton<int>(
                 value: homeController.selectedFloor.value,
@@ -44,16 +45,15 @@ class _AddFloorButtonState extends State<AddFloorButton> {
                 onPressed: () {
                   Get.back();
                 },
-                child: const Text('취소'),
+                child: const Text('close'),
               ),
               TextButton(
                 onPressed: () {
                   // 선택된 층 처리 로직
                   Get.back();
-                  //TODO 층 추가 로직
                   homeController.addFloor();
                 },
-                child: const Text('확인'),
+                child: const Text('add'),
               ),
             ],
           ),

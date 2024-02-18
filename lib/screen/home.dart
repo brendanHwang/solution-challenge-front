@@ -33,7 +33,6 @@ class _HomeState extends State<Home> {
         items: const [
           BottomNavigationBarItem(
             icon: Icon(Icons.home),
-
             label: 'Home', // 이 레이블은 실제로 표시되지 않을 것입니다.
           ),
           BottomNavigationBarItem(

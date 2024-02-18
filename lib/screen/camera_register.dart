@@ -54,8 +54,7 @@ class CameraRegister extends StatelessWidget {
                     TextFormField(
                       controller: _cameraKeyController,
                       decoration: const InputDecoration(
-                        labelText: '카메라 Key',
-                        hintText: '카메라 Key 16자리를 입력하세요',
+                        labelText: 'camera Key',
                         border: OutlineInputBorder(),
                       ),
                     ),
@@ -72,14 +71,14 @@ class CameraRegister extends StatelessWidget {
                           backgroundColor: AppColor.primaryColor,
                           padding: const EdgeInsets.symmetric(vertical: 13),
                         ),
-                        child: const Text('카메라 키 등록'),
+                        child: const Text('enroll'),
                       ),
                     ),
                     const SizedBox(height: 20),
                     // 카메라 키 등록 안내 문구
                     const Text(
 
-                      '카메라 Key는 방을 생성후 구역을 생성을 통해 발급되는 16자리 문자열입니다.',
+                      'The camera key is a 16-character string issued by creating a room and then creating a zone. \n',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.black54,

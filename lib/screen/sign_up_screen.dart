@@ -54,7 +54,7 @@ class SignUpScreen extends StatelessWidget {
                           labelText: '사용자 이름',
                         ),
                         onChanged: (value) {
-                          signController.userName.value = value;
+                          signController.user.value.name = value;
                         },
                       ),
                       const SizedBox(height: 20),
@@ -62,11 +62,11 @@ class SignUpScreen extends StatelessWidget {
                       TextFormField(
                         controller: emailController,
                         decoration: const InputDecoration(
-                          labelText: '이메일 주소',
+                          labelText: 'email',
                           hintText: 'email@example.com',
                         ),
                         onChanged: (value) {
-                          signController.email.value = value;
+                          signController.user.value.email = value;
                         },
                         validator: emailValidator,
                       ),
@@ -75,10 +75,10 @@ class SignUpScreen extends StatelessWidget {
                       TextFormField(
                         obscureText: true,
                         decoration: const InputDecoration(
-                          labelText: '비밀번호',
+                          labelText: 'password',
                         ),
                         onChanged: (value) {
-                          signController.password.value = value;
+                          signController.user.value.password = value;
                         },
                         validator: passwordValidator,
                       ),
@@ -88,10 +88,10 @@ class SignUpScreen extends StatelessWidget {
                       TextFormField(
                         obscureText: true,
                         decoration: const InputDecoration(
-                          labelText: '비밀번호 확인',
+                          labelText: 'password confirm',
                         ),
                         onChanged: (value) {
-                          signController.passwordCheck.value = value;
+                          signController.user.value.passwordApprove = value;
                         },
                         validator: passwordCheckValidator,
                       ),
@@ -103,7 +103,6 @@ class SignUpScreen extends StatelessWidget {
                         child: ElevatedButton(
                           onPressed: () {
                             if (_formKey.currentState!.validate()) {
-                              // TODO 회원 가입 처리 함수 호출 (pb server)
                               signController.signUp();
                             }
                           },
@@ -111,19 +110,19 @@ class SignUpScreen extends StatelessWidget {
                             backgroundColor: AppColor.primaryColor,
                             padding: const EdgeInsets.symmetric(vertical: 13),
                           ),
-                          child: const Text('회원 가입'),
+                          child: const Text('sign up'),
                         ),
                       ),
                       // 기타 링크들 (예: 로그인 페이지로 돌아가기)
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text('이미 계정이 있나요?'),
+                          const Text('I have an account'),
                           TextButton(
                             onPressed: () {
                               Get.to(() => const SignInScreen());
                             },
-                            child: const Text('로그인하기'),
+                            child: const Text('sign in'),
                           ),
                         ],
                       ),
