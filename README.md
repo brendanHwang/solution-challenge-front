@@ -35,7 +35,7 @@ To get started with the Solution Challenge Front app, ensure you have Flutter in
 ## Screenshots
 
 1. Sign in page
-Include s<img width="369" alt="스크린샷 2024-02-21 오후 10 29 46" src="https://github.com/brendanHwang/solution-challenge-front/assets/62835332/973126aa-46ca-499d-934b-0d2442fe2bb2">
+<img width="369" alt="스크린샷 2024-02-21 오후 10 29 46" src="https://github.com/brendanHwang/solution-challenge-front/assets/62835332/973126aa-46ca-499d-934b-0d2442fe2bb2">
 
 2. Sign up page
 <img width="321" alt="스크린샷 2024-02-21 오후 10 30 20" src="https://github.com/brendanHwang/solution-challenge-front/assets/62835332/74cc8496-6da6-4c84-8050-3f12c2d7160f">
