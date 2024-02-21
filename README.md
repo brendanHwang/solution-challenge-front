@@ -1,6 +1,6 @@
 To create a README file for a Flutter app project named "solution-challenge-front", I'll provide you with a template that covers the basic and essential sections you might want to include. This README template is designed to be comprehensive, catering to both beginners and experienced Flutter developers. You can customize it further to fit your project's specific requirements.
 
-```markdown
+
 # Solution Challenge Front
 
 This Flutter project is designed to provide a comprehensive solution for [briefly describe the challenge or problem your app aims to solve]. Our app leverages Flutter's versatile UI toolkit to deliver a seamless and responsive experience across multiple platforms.
