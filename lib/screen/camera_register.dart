@@ -66,7 +66,7 @@ class CameraRegister extends StatelessWidget {
                       width: double.infinity, // 최대 너비 설정
                       child: ElevatedButton(
                         onPressed: () {
-                          // Get.to(const Detection());
+                          Get.to(const CameraScreen());
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppColor.primaryColor,
