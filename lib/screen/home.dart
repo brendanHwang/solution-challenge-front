@@ -21,7 +21,7 @@ class _HomeState extends State<Home> {
         index: _selectedIndex,
         children:  [
           HomeScreen(),
-          const SettingsScreen(),
+          SettingsScreen(),
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(

@@ -21,18 +21,8 @@ class HomeScreen extends StatelessWidget {
           title: const Text('hanyang univ construction field',
               style: TextStyle(
                   color: Colors.black,
-                  fontSize: 17,
+                  fontSize: 20,
                   fontWeight: FontWeight.bold)),
-          leading: IconButton(
-            onPressed: () {
-              // 로그아웃 기능 수행
-              signController.signOut();
-            },
-            icon: const Icon(
-              Icons.logout,
-              color: Colors.black,
-            ),
-          ),
           // actions: [
           //   IconButton(
           //     icon: const Icon(Icons.search, color: Colors.black, size: 30),
@@ -58,7 +48,7 @@ class HomeScreen extends StatelessWidget {
                         fontSize: 13,
                       )),
                   SizedBox(height: 5),
-                  Text('128',
+                Text('128', // TODO: 헬멧 미착용 횟수
                       style: TextStyle(
                           color: Colors.black,
                           fontSize: 32,
@@ -72,11 +62,11 @@ class HomeScreen extends StatelessWidget {
                             color: Colors.black54,
                             fontSize: 14,
                           )),
-                      Icon(
-                        Icons.filter_list,
-                        color: Colors.grey,
-                        size: 20,
-                      )
+                      // Icon(
+                      //   Icons.filter_list,
+                      //   color: Colors.grey,
+                      //   size: 20,
+                      // )
                     ],
                   )
                 ],
@@ -97,20 +87,6 @@ class HomeScreen extends StatelessWidget {
                           ),
                         ),
                       ),
-                      title: Text(
-                        floor.getSectionNames(),
-                        style: const TextStyle(
-                          fontSize: 15,
-                        ),
-                      ),
-                      // subtitle: const Text(
-                      //   '작업 인원: N명',
-                      //   style: TextStyle(
-                      //     fontSize: 13,
-                      //     fontWeight: FontWeight.w300,
-                      //     color: Colors.black54,
-                      //   ),
-                      // ),
                       trailing: const Icon(
                         Icons.arrow_forward_ios,
                         size: 17,

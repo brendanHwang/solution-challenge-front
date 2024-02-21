@@ -51,7 +51,7 @@ class SignUpScreen extends StatelessWidget {
                       // 사용자 이름 입력 필드
                       TextFormField(
                         decoration: const InputDecoration(
-                          labelText: '사용자 이름',
+                          labelText: 'user name',
                         ),
                         onChanged: (value) {
                           signController.user.value.name = value;
@@ -120,7 +120,7 @@ class SignUpScreen extends StatelessWidget {
                           const Text('I have an account'),
                           TextButton(
                             onPressed: () {
-                              Get.to(() => const SignInScreen());
+                              Get.to(() => SignInScreen());
                             },
                             child: const Text('sign in'),
                           ),

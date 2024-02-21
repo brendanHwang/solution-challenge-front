@@ -1,45 +1,38 @@
-import 'package:solution_challenge_front/model/section_model.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 
 class FloorModel {
   final String id;
   final int num;
-  final List<SectionModel> sections;
+  Stream<QuerySnapshot<Map<String, dynamic>>>? sections;
 
-  FloorModel({required this.id, required this.num, required this.sections});
+  FloorModel({required this.id, required this.num,  this.sections});
 
   factory FloorModel.fromJson(Map<String, dynamic> json) {
     final id = json['id'] as String;
     final floor = json['num'] as int;
-    final sections = json['sections'] as List<dynamic>;
+
+    final sections = FirebaseFirestore.instance.collection(
+        'users/${FirebaseAuth.instance.currentUser!.uid}/floors/$id/sections').snapshots();
     return FloorModel(
       id: id,
       num: floor,
-      sections: sections
-          .map((section) =>
-              SectionModel.fromJson(section as Map<String, dynamic>))
-          .toList(),
+      sections: sections,
     );
   }
+
 
   Map<String, dynamic> toJson() {
     return {
       'id': id,
       'num': num,
-      'sections': sections.map((section) => section.toJson()).toList(),
     };
   }
 
   @override
   String toString() {
     return 'FloorModel{ id: $id'
-        'num: $num, sections: ${sections.map((section) => section.toString()).join(', ')}';
+        'num: $num';
   }
 
-  String getSectionNames() {
-    if (sections.isEmpty) {
-      return 'there are no sections';
-    }
-
-    return '${sections.map((section) => section.name).join(', ')} sections';
-  }
 }

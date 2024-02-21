@@ -42,6 +42,8 @@ dependencies:
   firebase_auth:
   firebase_ui_auth:
   cloud_firestore:
+  flutter_pytorch:
+  image_picker:
 
 
 

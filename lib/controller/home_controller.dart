@@ -68,23 +68,12 @@ class HomeController extends GetxController {
   // 구역 추가 함수
   void addSection({required String floorId, required String sectionName}) {
     // firebase에서 추가
-    final section =
-        firebaseAddSection(floorId: floorId, sectionName: sectionName);
-
-    // 상태관리에서도 추가
-    floors[floors.indexWhere((element) => element.id == floorId)]
-        .sections
-        .add(section);
+    firebaseAddSection(floorId: floorId, sectionName: sectionName);
   }
 
   // 구역 삭제 함수
-  void deleteSection(
-      {required String floorId, required SectionModel sectionModel}) {
-    // 상태관리에서도 삭제
-    floors[floors.indexWhere((element) => element.id == floorId)]
-        .sections
-        .remove(sectionModel);
+  void deleteSection({required String floorId, required String sectionId}) {
     // firebase에서 삭제
-    firebaseDeleteSection(floorId: floorId, sectionModel: sectionModel);
+    firebaseDeleteSection(floorId: floorId, sectionId: sectionId);
   }
 }

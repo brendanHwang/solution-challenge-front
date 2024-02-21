@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:solution_challenge_front/constant/app_color.dart';
+import 'package:solution_challenge_front/screen/detection.dart';
 // 필요한 다른 import 구문
 
 class CameraRegister extends StatelessWidget {
@@ -65,7 +66,7 @@ class CameraRegister extends StatelessWidget {
                       width: double.infinity, // 최대 너비 설정
                       child: ElevatedButton(
                         onPressed: () {
-                          // 카메라 키 등록 로직
+                          // Get.to(const Detection());
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: AppColor.primaryColor,
@@ -77,13 +78,11 @@ class CameraRegister extends StatelessWidget {
                     const SizedBox(height: 20),
                     // 카메라 키 등록 안내 문구
                     const Text(
-
                       'The camera key is a 16-character string issued by creating a room and then creating a zone. \n',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: Colors.black54,
                         fontSize: 12,
-
                       ),
                     ),
                     // 여기에 추가적인 기능이나 링크 배치

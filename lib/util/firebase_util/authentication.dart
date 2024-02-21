@@ -71,7 +71,7 @@ void firebaseSignout() async {
   try {
     // 1. Firebase 로그아웃
     await FirebaseAuth.instance.signOut();
-    Get.offAll(() => const SignInScreen());
+    Get.offAll(() => SignInScreen());
   } catch (e) {
     Get.snackbar('Error', 'fail to sign out');
   }
