@@ -1,6 +1,3 @@
-To create a README file for a Flutter app project named "solution-challenge-front", I'll provide you with a template that covers the basic and essential sections you might want to include. This README template is designed to be comprehensive, catering to both beginners and experienced Flutter developers. You can customize it further to fit your project's specific requirements.
-
-
 # Solution Challenge Front
 
 This Flutter project is designed to provide a comprehensive solution for [briefly describe the challenge or problem your app aims to solve]. Our app leverages Flutter's versatile UI toolkit to deliver a seamless and responsive experience across multiple platforms.
@@ -34,54 +31,23 @@ To get started with the Solution Challenge Front app, ensure you have Flutter in
    flutter run
    ```
 
-## Features
-
-List down the features of your app. For example:
-
-- Feature 1: Description
-- Feature 2: Description
-- Feature 3: Description
 
 ## Screenshots
 
-Include screenshots of your app running on different devices to give a preview of what users can expect.
+1. Sign in page
+Include s<img width="369" alt="스크린샷 2024-02-21 오후 10 29 46" src="https://github.com/brendanHwang/solution-challenge-front/assets/62835332/973126aa-46ca-499d-934b-0d2442fe2bb2">
+
+2. Sign up page
+<img width="321" alt="스크린샷 2024-02-21 오후 10 30 20" src="https://github.com/brendanHwang/solution-challenge-front/assets/62835332/74cc8496-6da6-4c84-8050-3f12c2d7160f">
+
+3. Camera enroll page
+<img width="320" alt="스크린샷 2024-02-21 오후 10 31 50" src="https://github.com/brendanHwang/solution-challenge-front/assets/62835332/10288718-87b5-4681-a671-0643d4aa286f">
+
 
 ## Built With
 
 - [Flutter](https://flutter.dev/) - The UI toolkit used
 - [Firebase](https://firebase.google.com/) - Backend (if used)
 
-## Contributing
-
-We welcome contributions to the Solution Challenge Front app. Please read `CONTRIBUTING.md` for details on our code of conduct, and the process for submitting pull requests to us.
-
-## Versioning
-
-We use [SemVer](http://semver.org/) for versioning. For the versions available, see the [tags on this repository](https://github.com/yourusername/solution-challenge-front/tags).
-
-## Authors
-
-- **Your Name** - *Initial work* - [YourUsername](https://github.com/YourUsername)
-
-See also the list of [contributors](https://github.com/yourusername/solution-challenge-front/contributors) who participated in this project.
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
-
-## Acknowledgments
-
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
-
-## Support
-
-For support, email fake@example.com or join our Slack channel.
-
----
-
-Remember to replace placeholder texts like `yourusername`, `Your Name`, `[briefly describe the challenge or problem your app aims to solve]`, etc., with your actual project information. Customize each section to reflect the unique aspects and features of your app.
-```
 
 This template aims to provide a solid foundation for your project's README, ensuring that users and contributors have a clear understanding of the app, its features, and how to get started with it.
